@@ -1,0 +1,6 @@
+@Whalebone.MicroserviceApp_HostAddress = http://localhost:5283
+
+GET {{Whalebone.MicroserviceApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
