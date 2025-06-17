@@ -1,0 +1,30 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "I_w1ll_L34rn_G0_@ft3r_Th!$"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "I_w1ll_L34rn_G0_@ft3r_Th!$", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  app:
+    build:
+      context: ./Whalebone.MicroserviceApp
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=WhaleboneDb;User Id=sa;Password=I_w1ll_L34rn_G0_@ft3r_Th!$;TrustServerCertificate=True
+    ports:
+      - "8080:80"
+      # Uncomment if HTTPS is configured in your app and Dockerfile
+      # - "8081:443"
+    restart: unless-stopped
+    # container_name: whalebone_app
