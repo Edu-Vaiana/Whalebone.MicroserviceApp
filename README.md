@@ -68,3 +68,9 @@ dotnet test Whalebone.MicroserviceApp.IntegrationTests
 - **Credentials:**  
   The database credentials in `appsettings.json` and `docker-compose.yml` are for development/demo only.  
   **In production, use secure secret management (e.g., environment variables, Azure Key Vault, AWS Secrets Manager, or Docker secrets).**
+
+---
+
+![Swagger UI Screenshot](Swagger%20screenshot.png)
+
+---
