@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Whalebone.MicroserviceApp\Whalebone.MicroserviceApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>
