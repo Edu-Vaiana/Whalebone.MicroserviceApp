@@ -13,12 +13,12 @@ ADD ZscalerRootCA.crt /usr/local/share/ca-certificates/ZscalerRootCA.crt
 ADD ZscalerRootCA.crt /etc/ssl/certs/ZscalerRootCA.crt
 RUN chmod 644 /usr/local/share/ca-certificates/ZscalerRootCA.crt && update-ca-certificates
 
-# Install/update CA certificates
+# Install/update CA certificates Needed because my machine uses Zscaler (for dev only)
 RUN apt-get update && \
     apt-get install -y --reinstall ca-certificates && \
     update-ca-certificates
 
-# Test SSL with curl
+# Test SSL with curl due to problems with Zscaler
 #RUN apt-get update && apt-get install -y curl && curl -Iv https://api.nuget.org/v3/index.json
 
 # Copy nuget.config to ignore SSL errors (for dev only)
